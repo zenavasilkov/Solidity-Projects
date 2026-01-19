@@ -13,11 +13,11 @@ contract FundMe {
     address[] public funders;
     AggregatorV3Interface public priceFeed;
 
-    address public immutable i_owner;
+    address public immutable I_OWNER;
     uint256 public constant MINIMUM_USD = 5;
 
     constructor(address priceFeedAddress) {
-        i_owner = msg.sender;
+        I_OWNER = msg.sender;
         priceFeed = AggregatorV3Interface(priceFeedAddress);
     }
 
@@ -27,12 +27,8 @@ contract FundMe {
         funders.push(msg.sender);
     }
 
-    function getVersion() public view returns (uint256) {
-        return priceFeed.version();
-    }
-
     modifier onlyOwner() {
-        if (msg.sender != i_owner) revert FundMe_NotOwner();
+        if (msg.sender != I_OWNER) revert FundMe_NotOwner();
         _;
     }
 

@@ -18,7 +18,7 @@ contract FundMeTest is Test {
     }
 
     function testOwnerIsMsgSender() public view {
-        assertEq(fundMe.i_owner(), address(msg.sender));
+        assertEq(fundMe.I_OWNER(), address(msg.sender));
     }
 
     function testFundFailsWithoutEnoghETH() public {
